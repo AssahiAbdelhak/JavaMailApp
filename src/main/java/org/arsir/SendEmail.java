@@ -1,11 +1,14 @@
-import java.util.Properties;
+import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class SendEmail {
-    public static void main(String[] args) {
+    public static <recepient> void main(String[] args) {
         // Email ID of Recipient.
-        String recipient = "bdalhqa89@gmail.com"; // Change to your recipient's email
+        HashMap<String, String> recipients = new HashMap<>();
+        recipients.put("Abdelhak", "bdalhqa89@gmail.com");
+        recipients.put("Adam", "adam.kharfi01@gmail.com");
+        recipients.put("Alexandre", "alexandre.le1908@gmail.com");
 
         // Email ID of Sender.
         String sender = "assahiabdelhak@gmail.com"; // Change to your email
@@ -32,24 +35,27 @@ public class SendEmail {
         });
 
         try {
-            // MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+            for (String key : recipients.keySet()){
+                // MimeMessage object.
+                MimeMessage message = new MimeMessage(session);
 
-            // Set From Field: adding sender's email to from field.
-            message.setFrom(new InternetAddress(sender));
+                // Set From Field: adding sender's email to from field.
+                message.setFrom(new InternetAddress(recipients.get(key)));
 
-            // Set To Field: adding recipient's email to from field.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+                // Set To Field: adding recipient's email to from field.
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipients.get(key)));
 
-            // Set Subject: subject of the email
-            message.setSubject("This is Subject");
+                // Set Subject: subject of the email
+                message.setSubject("This is Subject");
 
-            // Set body of the email.
-            message.setText("This is a test mail");
+                // Set body of the email.
+                message.setText("Bonjour "+key);
 
-            // Send email.
-            Transport.send(message);
-            System.out.println("Mail successfully sent");
+                // Send email.
+                Transport.send(message);
+                System.out.println("Mail successfully sent");
+            }
+
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
