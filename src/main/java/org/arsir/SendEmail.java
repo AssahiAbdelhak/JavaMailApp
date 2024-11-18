@@ -3,7 +3,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class SendEmail {
-    public static <recepient> void main(String[] args) {
+    public static void main(String[] args) {
         // Email ID of Recipient.
         HashMap<String, String> recipients = new HashMap<>();
         recipients.put("Abdelhak", "bdalhqa89@gmail.com");
@@ -45,8 +45,8 @@ public class SendEmail {
                 // Set To Field: adding recipient's email to from field.
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipients.get(key)));
 
-                // Set Subject: subject of the email
-                message.setSubject("This is Subject");
+            // Set Subject: subject of the email
+            message.setSubject("This is Subject");
 
                 // Set body of the email.
                 message.setText("Bonjour "+key);
