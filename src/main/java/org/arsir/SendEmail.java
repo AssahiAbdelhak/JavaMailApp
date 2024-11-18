@@ -1,6 +1,9 @@
-import java.util.*;
+package org.arsir;
+
 import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.*;
 
 public class SendEmail {
     public static void main(String[] args) {
@@ -14,9 +17,17 @@ public class SendEmail {
         String sender = "assahiabdelhak@gmail.com"; // Change to your email
 
         // Using host as smtp.gmail.com for Gmail
-        String host = "smtp.gmail.com";
+        String host = "pop.gmail.com";
         String username = "assahiabdelhak@gmail.com"; // Your Gmail address
         String password = "ziqq nlgn rcbl ugrd"; // Your Gmail password or app password
+
+        //String username = "";
+        //String password = "";
+
+        /*MailReceiveClient mailReceiveClient = new MailReceiveClient("pop3",host,"110",username,password);
+        mailReceiveClient.receive();
+        System.out.println("Fin !!");*/
+
 
         // Getting system properties
         Properties properties = System.getProperties();
@@ -59,5 +70,7 @@ public class SendEmail {
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
+
+
     }
 }
