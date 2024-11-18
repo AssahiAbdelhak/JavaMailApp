@@ -1,11 +1,9 @@
 package org.arsir;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.search.FlagTerm;
-import java.util.Arrays;
-import java.util.Properties;
+import javax.mail.internet.*;
+import javax.mail.search.*;
+import java.util.*;
 
 public class MailReceiveClientProg {
 
@@ -13,7 +11,7 @@ public class MailReceiveClientProg {
         // Email ID of Recipient.
         String receiver = "cesar_pop@localhost";
 
-        // Using host as smtp.gmail.com for Gmail
+        // Using host as smtp.gmail.com for Gmail or localhost for local
         String host = "localhost";
 
         // Getting system properties
@@ -65,7 +63,7 @@ public class MailReceiveClientProg {
 
         try {
             Store store = session.getStore("pop3");
-            store.connect("cesar_pop", "cesar_pop"); // Use App Password here
+            store.connect("cesar_pop", "cesar_pop");
 
             Folder inbox = store.getFolder("INBOX");
             inbox.open(Folder.READ_WRITE);

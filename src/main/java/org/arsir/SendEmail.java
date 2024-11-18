@@ -1,8 +1,7 @@
 package org.arsir;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
 import java.util.*;
 
 public class SendEmail {
@@ -13,20 +12,10 @@ public class SendEmail {
         recipients.put("Adam", "adam.kharfi01@gmail.com");
         recipients.put("Alexandre", "alexandre.le1908@gmail.com");
 
-        // Email ID of Sender.
-        String sender = "assahiabdelhak@gmail.com"; // Change to your email
-
         // Using host as smtp.gmail.com for Gmail
         String host = "pop.gmail.com";
         String username = "assahiabdelhak@gmail.com"; // Your Gmail address
         String password = "ziqq nlgn rcbl ugrd"; // Your Gmail password or app password
-
-        //String username = "";
-        //String password = "";
-
-        /*MailReceiveClient mailReceiveClient = new MailReceiveClient("pop3",host,"110",username,password);
-        mailReceiveClient.receive();
-        System.out.println("Fin !!");*/
 
 
         // Getting system properties
@@ -56,8 +45,8 @@ public class SendEmail {
                 // Set To Field: adding recipient's email to from field.
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipients.get(key)));
 
-            // Set Subject: subject of the email
-            message.setSubject("This is Subject");
+                // Set Subject: subject of the email
+                message.setSubject("This is Subject");
 
                 // Set body of the email.
                 message.setText("Bonjour "+key);
