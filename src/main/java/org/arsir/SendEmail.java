@@ -46,10 +46,10 @@ public class SendEmail {
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipients.get(key)));
 
                 // Set Subject: subject of the email
-                message.setSubject("This is Subject");
+                message.setSubject("This is a subject for a mail sent to " + key);
 
                 // Set body of the email.
-                message.setText("Bonjour "+key);
+                message.setText("Bonjour " + key);
 
                 // Send email.
                 Transport.send(message);
@@ -59,7 +59,5 @@ public class SendEmail {
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
-
-
     }
 }
